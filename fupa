@@ -1,0 +1,3 @@
+Vagrant.configure(3) do |config|
+  config.box = 'hashicorp/precise64'
+end
