@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'vagrant/skel/version'
@@ -12,6 +13,9 @@ Gem::Specification.new do |spec|
   spec.description   = spec.summary
   spec.homepage      = 'https://github.com/BaxterStockman/vagrant-skel'
   spec.license       = 'MIT'
+
+  # Document gem on install
+  spec.metadata['yard.run'] = 'yri'
 
   spec.test_files    = spec.files.grep(%r{^(test|spec|features)/})
 
@@ -28,5 +32,11 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'simplecov'
   spec.add_development_dependency 'rubocop'
   spec.add_development_dependency 'cane'
-  spec.add_development_dependency 'coveralls'
+
+  # For automatic gem doc capabilities
+  spec.add_development_dependency 'yard', '>= 0.9.2'
+
+  # Need older Coveralls version, as 0.8.21 (latest as of 05/06/2017) requires
+  # a newer version of thor than permitted by vagrant-spec
+  spec.add_development_dependency 'coveralls', '~> 0.7.0'
 end
